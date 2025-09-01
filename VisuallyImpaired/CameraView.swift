@@ -4,15 +4,42 @@
 //
 //  Created by aanya kungwani on 9/1/25.
 //
-
 import SwiftUI
+import AVFoundation
 
-struct CameraView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+
+
+struct CameraView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView(frame: UIScreen.main.bounds)
+
+        let captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .photo
+
+        guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else { return view }
+        let videoInput: AVCaptureDeviceInput
+
+        do {
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+        } catch {
+            return view
+        }
+
+        if captureSession.canAddInput(videoInput) {
+            captureSession.addInput(videoInput)
+        } else {
+            return view
+        }
+
+        let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.layer.bounds
+        previewLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(previewLayer)
+
+        captureSession.startRunning()
+
+        return view
     }
-}
 
-#Preview {
-    CameraView()
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
