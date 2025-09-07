@@ -9,40 +9,45 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack{
-            Color(.red)
-                .ignoresSafeArea()
-        }
-        VStack(spacing:40) {
-            Text("Home")
+        VStack(spacing:0) {
+            
+            Text("App")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
-                .padding(.top)
+                .padding()
             
-            ZStack{
-                RoundedRectangle(cornerRadius:30)
-                    .fill(Color.blue)
+            HStack(spacing:0) {
+                
+                //ZStack{
+                //   RoundedRectangle(cornerRadius:30)
+                //     .fill(Color.blue)
+                //     .frame(height:150)
+                //    .frame(maxWidth: .infinity)
+                // }
                 Text("Camera")
+                    .font(.system(size:45))
                     .fontWeight(.bold)
                     .font(.largeTitle)
                     .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
+                   .frame(maxHeight: .infinity)
+                    .background(Color.blue)
+                
+                Text("Settings")
+                font(.system(size:45))
+                    .fontWeight(.bold)
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
+                    .frame(maxHeight: .infinity)
+                    .background(Color.blue)
+                
                 
             }
-            .padding(.top,30)
             
-            
-            Text("Settings")
-                .fontWeight(.bold)
-                .font(.largeTitle)
-                .foregroundColor(.black)
-                .background(Color.blue)
-                .cornerRadius(15)
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
         }
-        .padding(.top,30)
-        
-        
-        Spacer()
     }
     
     
@@ -57,12 +62,14 @@ struct ContentView: View {
     // Text("Change 1!")
     //}
     // .padding()
-    
 }
+    
     #Preview {
         ContentView()
         
         
     }
     
-
+    
+    
+    
