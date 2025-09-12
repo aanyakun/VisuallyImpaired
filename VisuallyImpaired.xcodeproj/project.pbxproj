@@ -10,9 +10,22 @@
 		2CE5E83B2E3AB6C4006BA11B /* VisuallyImpaired.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisuallyImpaired.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0481A2D62E74D4430074CAC3 /* Exceptions for "VisuallyImpaired" folder in "VisuallyImpaired" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2CE5E83A2E3AB6C4006BA11B /* VisuallyImpaired */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2CE5E83D2E3AB6C4006BA11B /* VisuallyImpaired */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0481A2D62E74D4430074CAC3 /* Exceptions for "VisuallyImpaired" folder in "VisuallyImpaired" target */,
+			);
 			path = VisuallyImpaired;
 			sourceTree = "<group>";
 		};
@@ -251,6 +264,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PC35CJDCZP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -278,6 +292,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PC35CJDCZP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
