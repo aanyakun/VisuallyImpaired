@@ -10,43 +10,38 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing:0) {
-            
-            Text("App")
+            Text("Visually Impaired App")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
                 .padding()
             
-            HStack(spacing:0) {
-                
-                //ZStack{
-                //   RoundedRectangle(cornerRadius:30)
-                //     .fill(Color.blue)
-                //     .frame(height:150)
-                //    .frame(maxWidth: .infinity)
-                // }
+            HStack(spacing:12) {
+               // ZStack  {
+               // RoundedRectangle(cornerRadius: 40).fill(.blue)
                 Text("Camera")
-                    .font(.system(size:45))
-                    .fontWeight(.bold)
+                .font(.system(size:45,weight: .bold))
                     .font(.largeTitle)
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                   .frame(maxHeight: .infinity)
-                    .background(Color.blue)
+                    .frame(maxWidth: .infinity, minHeight: 650)
+                    .background(.blue, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    
+                
+                    //Spacer()
                 
                 Text("Settings")
-                font(.system(size:45))
-                    .fontWeight(.bold)
+                    .font(.system(size:45,weight: .bold))
                     .font(.largeTitle)
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity)
-                    .frame(maxHeight: .infinity)
-                    .background(Color.blue)
+                    .frame(maxWidth: .infinity, minHeight: 650)
+                    .background(.green, in: RoundedRectangle(cornerRadius: 35, style: .circular))
                 
-                
+          //  }
             }
             
             .frame(maxWidth: .infinity,maxHeight: .infinity)
+            Text("Welcome!")
+         .font(.largeTitle)
         }
     }
     
