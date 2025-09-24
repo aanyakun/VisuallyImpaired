@@ -9,41 +9,45 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing:0) {
-            Text("Visually Impaired App")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .padding()
-            
-            HStack(spacing:12) {
-               // ZStack  {
-               // RoundedRectangle(cornerRadius: 40).fill(.blue)
-                Text("Camera")
-                .font(.system(size:45,weight: .bold))
+        NavigationView{
+            VStack(spacing:0) {
+                Text("Visually Impaired App")
                     .font(.largeTitle)
+                    .fontWeight(.bold)
                     .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, minHeight: 650)
-                    .background(.blue, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    .padding()
+                
+                HStack(spacing:12) {
+                    // ZStack  {
+                    // RoundedRectangle(cornerRadius: 40).fill(.blue)
+                    NavigationLink(destination: CameraView()) {
+                        
+                        
+                        Text("Camera")
+                            .font(.system(size:45,weight: .bold))
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, minHeight: 650)
+                            .background(.blue, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    }
                     
-                
                     //Spacer()
+                    
+                    Text("Settings!!")
+                        .font(.system(size:45,weight: .bold))
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, minHeight: 650)
+                        .background(.green, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    
+                    //  }
+                }
                 
-                Text("Settings")
-                    .font(.system(size:45,weight: .bold))
+                .frame(maxWidth: .infinity,maxHeight: .infinity)
+                Text("Welcome!")
                     .font(.largeTitle)
-                    .foregroundColor(.black)
-                    .frame(maxWidth: .infinity, minHeight: 650)
-                    .background(.green, in: RoundedRectangle(cornerRadius: 35, style: .circular))
-                
-          //  }
             }
-            
-            .frame(maxWidth: .infinity,maxHeight: .infinity)
-            Text("Welcome!")
-         .font(.largeTitle)
-        }
-    }
+        }}
     
     
     
