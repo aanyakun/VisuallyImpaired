@@ -33,7 +33,7 @@ struct ContentView: View {
                     
                     //Spacer()
                     
-                    Text("Settings")
+                    Text("Settings!!")
                         .font(.system(size:45,weight: .bold))
                         .font(.largeTitle)
                         .foregroundColor(.black)
