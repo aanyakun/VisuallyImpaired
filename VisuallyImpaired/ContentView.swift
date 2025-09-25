@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct CameraView: View {
+    var body: some View{
+        Text("")
+    }
+}
+
 struct ContentView: View {
     var body: some View {
         NavigationView{
