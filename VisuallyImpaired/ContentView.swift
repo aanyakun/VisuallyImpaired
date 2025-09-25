@@ -15,6 +15,7 @@ struct CameraView: View {
 
 struct ContentView: View {
     var body: some View {
+        LiveVisionSimpleView()
         NavigationView{
             VStack(spacing:0) {
                 Text("Visually Impaired App")

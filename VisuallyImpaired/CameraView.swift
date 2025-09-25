@@ -30,13 +30,16 @@ final class ReaderVM: NSObject, ObservableObject, AVCaptureVideoDataOutputSample
             let cam = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
             let input = try? AVCaptureDeviceInput(device: cam),
             session.canAddInput(input)
-        else { return }
+        else {
+            print("No camera")
+            return }
         session.addInput(input)
         
         let out = AVCaptureVideoDataOutput()
         out.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA]
         out.setSampleBufferDelegate(self, queue: DispatchQueue(label: "frames"))
-        guard session.canAddOutput(out) else { return }
+        guard session.canAddOutput(out) else { print("") ; return
+        }
         session.addOutput(out)
         
         //if let c = out.connection(with: .video), c.isVideoRotationAngle{ c.videoRotationAngle = .portrait }
@@ -63,7 +66,8 @@ final class ReaderVM: NSObject, ObservableObject, AVCaptureVideoDataOutputSample
             
             let seen = Seen(text: top.string, bbox: o.boundingBox)
             DispatchQueue.main.async
-            { self.handle(seen) }
+            { self.handle(seen)
+            }
         }
         let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
         try? handler.perform([request])
@@ -73,7 +77,7 @@ final class ReaderVM: NSObject, ObservableObject, AVCaptureVideoDataOutputSample
         
         let area = seen.bbox.width * seen.bbox.height
         let close = area > 0.05
-        let phrase = close ? "\(seen.text) – near" : "\(seen.text)"
+        let phrase = close ? "\(seen.text)  nearby" : "\(seen.text)"
         
         if speak, phrase != lastThing {
             lastThing = phrase
@@ -85,25 +89,28 @@ final class ReaderVM: NSObject, ObservableObject, AVCaptureVideoDataOutputSample
             }
         }
     }
-    struct LiveVisionSimpleView: View {
-        @StateObject var vm = ReaderVM()
+}
+struct LiveVisionSimpleView: View {
+    @StateObject var vm = ReaderVM()
         
-        var body : some View {
+    var body : some View {
             
             ZStack(alignment: .topLeading) {
                 CameraHost(layer: vm.previewLayer)
                     .ignoresSafeArea()
                 Text(" ")
-            }
-            VStack {
-                Spacer()
-                if let x = vm.recent {
-                    Text(x.text + ( (x.bbox.width*x.bbox.height) > 0.05 ? " nearby ": "" ))
-                        .font(.title)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 10)
-                    
+                
+                VStack {
+                    Spacer()
+                    if let x = vm.recent {
+                        Text(x.text + ( (x.bbox.width*x.bbox.height) > 0.05 ? " nearby ": "" ))
+                            .font(.title)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                        
+                    }
                 }
+                
             }
             .onAppear { vm.start() }
         }
@@ -112,6 +119,7 @@ final class ReaderVM: NSObject, ObservableObject, AVCaptureVideoDataOutputSample
     
 struct CameraHost: UIViewRepresentable {
     let layer: AVCaptureVideoPreviewLayer
+    
     func makeUIView(context: Context) -> UIView {
         let v = UIView()
         layer.frame = UIScreen.main.bounds
@@ -160,5 +168,4 @@ struct CameraHost: UIViewRepresentable {
         //
         //    func updateUIView(_ uiView: UIView, context: Context) {}
         //}
-    }
 
