@@ -122,6 +122,7 @@ struct CameraHost: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIView {
         let v = UIView()
+        layer.videoGravity = .resizeAspectFill
         layer.frame = UIScreen.main.bounds
         v.layer.addSublayer(layer)
         return v
