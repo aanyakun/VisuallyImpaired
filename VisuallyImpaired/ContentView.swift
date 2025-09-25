@@ -38,13 +38,15 @@ struct ContentView: View {
                     }
                     
                     //Spacer()
-                    
-                    Text("Settings!!")
-                        .font(.system(size:45,weight: .bold))
-                        .font(.largeTitle)
-                        .foregroundColor(.black)
-                        .frame(maxWidth: .infinity, minHeight: 650)
-                        .background(.green, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    NavigationLink(destination: SettingsView()){
+                        Text("Settings!!")
+                            .font(.system(size:45,weight: .bold))
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity, minHeight: 650)
+                            .background(.green, in: RoundedRectangle(cornerRadius: 35, style: .circular))
+                    }
+                   
                     
                     //  }
                 }
